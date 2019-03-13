@@ -11,3 +11,5 @@ gui.examplemod.simple.edit.description=Edit something.
 gui.examplemod.simple3.label01=One
 gui.examplemod.simple3.label02=Two "%1$s" will display the argument string
 gui.examplemod.simple3.label03=Three
+gui.examplemod.simple3.start_button=Start
+gui.examplemod.simple3.stop_button=Stop

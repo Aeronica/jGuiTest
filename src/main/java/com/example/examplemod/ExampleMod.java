@@ -94,13 +94,13 @@ public class ExampleMod
     @SideOnly(Side.CLIENT)
     private static void openGui2()
     {
-        new GuiSimple2(Minecraft.getMinecraft().currentScreen).display();
+        new GuiSimple2(null).display();
     }
 
     @SideOnly(Side.CLIENT)
     private static void openGui3()
     {
-        new GuiSimple3(Minecraft.getMinecraft().currentScreen).display();
+        new GuiSimple3(null).display();
     }
 
     public static class TheItem extends Item
@@ -121,9 +121,9 @@ public class ExampleMod
             if (worldIn.isRemote)
             {
                 logger.info("RightClicked");
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+                return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
             }
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+            return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         }
 
         @Override
