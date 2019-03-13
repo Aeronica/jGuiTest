@@ -3,6 +3,7 @@ package com.example.examplemod;
 import com.example.examplemod.gui.GuiHandler;
 import com.example.examplemod.gui.GuiSimple;
 import com.example.examplemod.gui.GuiSimple2;
+import com.example.examplemod.gui.GuiSimple3;
 import de.johni0702.minecraft.gui.container.GuiScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -79,7 +80,7 @@ public class ExampleMod
         {
             if (event.getItemStack().getItem() instanceof TheItem)
             {
-                openGui2();
+                openGui3();
             }
         }
     }
@@ -94,6 +95,12 @@ public class ExampleMod
     private static void openGui2()
     {
         new GuiSimple2(Minecraft.getMinecraft().currentScreen).display();
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static void openGui3()
+    {
+        new GuiSimple3(Minecraft.getMinecraft().currentScreen).display();
     }
 
     public static class TheItem extends Item
