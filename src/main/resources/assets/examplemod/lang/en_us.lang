@@ -1,0 +1,10 @@
+item.examplemod.the_item.name=Gui Gui
+gui.examplemod.back=Back
+gui.examplemod.title=Gui Simple
+gui.examplemod.editor.disclaimer=If it's broke please don't fix it. Let it rot.
+gui.examplemod.simple.import.title=Import MML
+gui.examplemod.simple.import.description=Import and configure MML music.
+gui.examplemod.simple.upload.title=Upload MML
+gui.examplemod.simple.upload.description=Upload MML to the server.
+gui.examplemod.simple.edit.title=Edit
+gui.examplemod.simple.edit.description=Edit something.
