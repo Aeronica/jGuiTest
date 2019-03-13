@@ -5,9 +5,12 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.github.johnrengelman.shadow'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 repositories {
@@ -17,13 +20,14 @@ repositories {
 }
 
 version = "1.0"
-group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group = "com.example.examplemod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "jGuiTest"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
+
 
 minecraft {
     version = "1.12.2-14.23.5.2815"
@@ -44,7 +48,7 @@ dependencies {
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
     compileOnly 'org.projectlombok:lombok:1.16.6'
-    compile files ('./xjars/jGui-1.12-1.0.0.jar')
+    shadow files ('./xjars/jGui-1.12-1.0.0.jar')
       
     // real examples
     //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
@@ -82,3 +86,32 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+configurations {
+    shadow
+    compile.extendsFrom shadow
+}
+
+shadowJar {
+    // only include compile time dependencies
+    configurations = [project.configurations.compile]
+    archiveName = tasks.jar.archiveName
+    relocate 'de.johni0702.minecraft.gui', 'com.example.examplemod.shadowed.de.johni0702.minecraft.gui'
+    relocate 'assets/jgui', 'assets/examplemod'
+}
+
+reobfJar {
+    setJar(tasks.shadowJar.archivePath)
+}
+reobfJar.dependsOn shadowJar
+
+jar {
+    configurations.shadow.each { dep ->
+        from(project.zipTree(dep)){
+            exclude 'META-INF', 'META-INF/**'
+        }
+    }
+}
+
+jar.dependsOn shadowJar
+jar.enabled = false
