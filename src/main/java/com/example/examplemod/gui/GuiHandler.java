@@ -28,7 +28,7 @@ public class GuiHandler
             return;
         }
 
-        GuiButton button = new GuiButton(BUTTON_REPLAY_EDITOR, event.getGui().width / 2 + 2,
+        GuiButton button = new GuiButton(BUTTON_REPLAY_EDITOR, event.getGui().width / 2 + 2 + 101,
                                          event.getGui().height / 4 + 4 * 24, I18n.format("gui.examplemod.title"));
         button.width = button.width / 2 - 2;
         event.getButtonList().add(button);
