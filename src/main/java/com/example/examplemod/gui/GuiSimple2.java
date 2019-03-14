@@ -40,7 +40,7 @@ public class GuiSimple2 extends AbstractGuiScreen<GuiSimple2> implements Closeab
         backButton.onClick(new Runnable() {
             @Override
             public void run() {
-                getMinecraft().displayGuiScreen(null);
+                getMinecraft().displayGuiScreen(parent);
             }
         });
 
