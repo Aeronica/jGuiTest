@@ -29,6 +29,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
+
 @Mod.EventBusSubscriber
 @Mod(modid = ExampleMod.MODID, name = ExampleMod.NAME, version = ExampleMod.VERSION)
 public class ExampleMod
@@ -115,8 +117,9 @@ public class ExampleMod
             hasSubtypes = false;
         }
 
+        @Nonnull
         @Override
-        public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+        public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
         {
             if (worldIn.isRemote)
             {
