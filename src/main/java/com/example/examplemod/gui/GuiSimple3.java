@@ -5,12 +5,15 @@ import de.johni0702.minecraft.gui.container.AbstractGuiScreen;
 import de.johni0702.minecraft.gui.container.GuiPanel;
 import de.johni0702.minecraft.gui.element.GuiButton;
 import de.johni0702.minecraft.gui.element.GuiLabel;
+import de.johni0702.minecraft.gui.element.advanced.GuiDropdownMenu;
 import de.johni0702.minecraft.gui.element.advanced.GuiProgressBar;
 import de.johni0702.minecraft.gui.function.Closeable;
 import de.johni0702.minecraft.gui.layout.CustomLayout;
 import de.johni0702.minecraft.gui.layout.HorizontalLayout;
 import de.johni0702.minecraft.gui.layout.VerticalLayout;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.world.EnumDifficulty;
 
 public class GuiSimple3 extends AbstractGuiScreen<GuiSimple3> implements Closeable
 {
@@ -26,7 +29,8 @@ public class GuiSimple3 extends AbstractGuiScreen<GuiSimple3> implements Closeab
     private final GuiButton noButton = new GuiButton(buttonPanel).setSize(75, 20).setI18nLabel("gui.no");
     private final GuiButton startButton = new GuiButton(buttonPanel).setSize(75, 20).setI18nLabel("gui.examplemod.simple3.start_button");
     private final GuiButton stopButton = new GuiButton(buttonPanel).setSize(75, 20).setI18nLabel("gui.examplemod.simple3.stop_button");
-
+    private final GuiDropdownMenu<EnumDifficulty> difficulty = new GuiDropdownMenu<EnumDifficulty>(buttonPanel).setHeight(20)
+            .setWidth(75).setValues(EnumDifficulty.values()).setToString(v -> I18n.format(v.getTranslationKey()));
     private volatile boolean killThread = false;
 
     public GuiSimple3(final net.minecraft.client.gui.GuiScreen parent)
@@ -61,6 +65,7 @@ public class GuiSimple3 extends AbstractGuiScreen<GuiSimple3> implements Closeab
                 killThread = false;
                 while (progress <= 1.01f && !killThread)
                 {
+                    progressBar.setI18nLabel(difficulty.getSelectedValue().getTranslationKey());
                     progressBar.setProgress(progress);
                     try
                     {
@@ -101,4 +106,6 @@ public class GuiSimple3 extends AbstractGuiScreen<GuiSimple3> implements Closeab
         stopButton.setDisabled();
         killThread = true;
     }
+
+
 }
