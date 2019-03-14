@@ -43,7 +43,7 @@ public class GuiSimple extends GuiScreen implements Closeable
         setTitle(new GuiLabel().setI18nText("gui.examplemod.title"));
         setBackground(Background.DIRT);
 
-        makeTab("import", GuiPanel::new).setDisabled(); // Not yet implemented
+        makeTab("import", () -> new GuiSimplePanel(this));
         makeTab("upload", GuiPanel::new).setDisabled(); // Not yet implemented
         makeTab("edit", GuiPanel::new).setDisabled(); // Not yet implemented
 

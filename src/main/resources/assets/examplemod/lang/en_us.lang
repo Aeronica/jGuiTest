@@ -1,4 +1,4 @@
-item.examplemod.the_item.name=Gui Gui
+item.examplemod:the_item.name=Gui Gui
 gui.examplemod.back=Back
 gui.examplemod.title=Gui Simple
 gui.examplemod.editor.disclaimer=If it's broke please don't fix it. Let it rot.
