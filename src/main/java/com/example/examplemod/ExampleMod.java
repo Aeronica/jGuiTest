@@ -31,19 +31,21 @@ import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 
+import static com.example.examplemod.Reference.*;
+
 @Mod.EventBusSubscriber
-@Mod(modid = ExampleMod.MODID, name = ExampleMod.NAME, version = ExampleMod.VERSION)
+@Mod(
+        modid = MOD_ID, name = MOD_NAME,
+        version = VERSION, acceptedMinecraftVersions = ACCEPTED_MINECRAFT_VERSIONS,
+        dependencies = DEPENDENTS
+)
 public class ExampleMod
 {
-    public static final String MODID = "examplemod";
-    public static final String NAME = "Example Mod";
-    public static final String VERSION = "1.0";
-
-    public static final TheItem TEST_ITEM = new TheItem();
+    private static final TheItem TEST_ITEM = new TheItem();
 
     public static Logger logger;
 
-    @Mod.Instance(MODID)
+    @Mod.Instance(MOD_ID)
     public static ExampleMod instance;
 
     @EventHandler
@@ -67,7 +69,7 @@ public class ExampleMod
         event.getRegistry().register(TEST_ITEM);
     }
 
-    @Mod.EventBusSubscriber(modid = MODID, value = Side.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, value = Side.CLIENT)
     public static class ClientEventHandler
     {
         @SubscribeEvent
@@ -108,7 +110,7 @@ public class ExampleMod
     public static class TheItem extends Item
     {
 
-        public TheItem()
+        TheItem()
         {
             setMaxStackSize(16);
             setRegistryName("the_item");
