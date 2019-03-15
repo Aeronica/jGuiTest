@@ -44,7 +44,7 @@ public class GuiSimple extends GuiScreen implements Closeable
         setBackground(Background.DIRT);
 
         makeTab("import", () -> new GuiSimplePanel(this));
-        makeTab("upload", GuiPanel::new).setDisabled(); // Not yet implemented
+        makeTab("upload", () -> new GuiSimplePanel2(this));
         makeTab("edit", GuiPanel::new).setDisabled(); // Not yet implemented
 
 

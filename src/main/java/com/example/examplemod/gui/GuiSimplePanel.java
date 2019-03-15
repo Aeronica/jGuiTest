@@ -27,6 +27,7 @@ public class GuiSimplePanel extends GuiPanel
     private static GuiNumberField newGuiNumberField() {
         return new GuiNumberField().setMaxLength(2).setSize(20, 20).setValidateOnFocusChange(true);
     }
+
     private final GuiSimple gui;
     private static final Path NO_PATHS = Paths.get(".");
 
@@ -49,23 +50,29 @@ public class GuiSimplePanel extends GuiPanel
     private final GuiPanel testPanel = new GuiPanel(this)
             .setLayout(new GridLayout().setCellsEqualSize(false).setSpacingX(20).setSpacingY(5).setColumns(3))
             .addElements(new GridLayout.Data(0, 0.5),
+                         // line 1, column 1, label
                          new GuiLabel().setI18nText("Start"),
+                         // line 1, column 2, H:M:S.ms
                          new GuiPanel().setLayout(new HorizontalLayout().setSpacing(2)).addElements(
                                  new HorizontalLayout.Data(0.5),
                                  startHour, new GuiLabel().setI18nText("hours"),
                                  startMin, new GuiLabel().setI18nText("minutes"),
                                  startSec, new GuiLabel().setI18nText("seconds"),
-                                 startMilli, new GuiLabel().setI18nText("ms")
-                                                                                                   ), startMarker,
+                                 startMilli, new GuiLabel().setI18nText("ms")),
+                         // line 1, column 3, drop down
+                         startMarker,
+
+                         // Line 2, column 1, label
                          new GuiLabel().setI18nText("End"),
+                         // line 2, column 2, H:M:S.ms
                          new GuiPanel().setLayout(new HorizontalLayout().setSpacing(2)).addElements(
                                  new HorizontalLayout.Data(0.5),
                                  endHour, new GuiLabel().setI18nText("hours"),
                                  endMin, new GuiLabel().setI18nText("minutes"),
                                  endSec, new GuiLabel().setI18nText("seconds"),
-                                 endMilli, new GuiLabel().setI18nText("ms")
-                                                                                                   ), endMarker);
-
+                                 endMilli, new GuiLabel().setI18nText("ms")),
+                         // line 2, column 3, drop down
+                         endMarker);
 
     GuiSimplePanel(GuiSimple gui)
     {
@@ -81,10 +88,10 @@ public class GuiSimplePanel extends GuiPanel
             }
         };
 
-        startMarker.setToString(toString).setMinSize(new Dimension(100, 20)).onSelection(i ->
-                                                                                                 onSelectedMarkerChanged(startMarker, startHour, startMin, startSec, startMilli));
-        endMarker.setToString(toString).setMinSize(new Dimension(100, 20)).onSelection(i ->
-                                                                                               onSelectedMarkerChanged(endMarker, endHour, endMin, endSec, endMilli));
+        startMarker.setToString(toString).setMinSize(new Dimension(100, 20))
+                .onSelection(i -> onSelectedMarkerChanged(startMarker, startHour, startMin, startSec, startMilli));
+        endMarker.setToString(toString).setMinSize(new Dimension(100, 20))
+                .onSelection(i -> onSelectedMarkerChanged(endMarker, endHour, endMin, endSec, endMilli));
 
         List<Path> pathList = new ArrayList<>();
         try {
@@ -129,7 +136,7 @@ public class GuiSimplePanel extends GuiPanel
             ExampleMod.logger.info("Selected: {}", path.toString());
         }
 
-        startMarker.setValues(new Integer[]{1000,2000,3000}).setSelected(0);
-        endMarker.setValues(new Integer[]{4000,5000,6000}).setSelected(0);
+        startMarker.setValues(new Integer[]{11111,22222,33333}).setSelected(0);
+        endMarker.setValues(new Integer[]{44444,55555,66666}).setSelected(0);
     }
 }
