@@ -12,6 +12,7 @@ import de.johni0702.minecraft.gui.layout.GridLayout;
 import de.johni0702.minecraft.gui.layout.HorizontalLayout;
 import de.johni0702.minecraft.gui.utils.Colors;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -22,6 +23,8 @@ public class GuiSimple extends GuiScreen implements Closeable
 
     public GuiButton currentTabButton;
     public GuiPanel currentTabPanel;
+
+    private File file;
 
     public final List<GuiPanel> tabPanels = new ArrayList<>();
 
@@ -45,7 +48,7 @@ public class GuiSimple extends GuiScreen implements Closeable
 
         makeTab("import", () -> new GuiSimplePanel(this));
         makeTab("upload", () -> new GuiSimplePanel2(this));
-        makeTab("edit", GuiPanel::new).setDisabled(); // Not yet implemented
+        makeTab("edit", () -> new GuiSimplePanel3(this, file));
 
 
         setLayout(new CustomLayout<GuiScreen>()

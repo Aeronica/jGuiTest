@@ -84,7 +84,7 @@ public class ExampleMod
         {
             if (event.getItemStack().getItem() instanceof TheItem)
             {
-                openGui3();
+                openGui();
             }
         }
     }
