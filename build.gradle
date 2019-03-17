@@ -74,6 +74,7 @@ processResources {
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+        exclude 'assets/jgui'
     }
 }
 
@@ -87,7 +88,6 @@ shadowJar {
     configurations = [project.configurations.compile]
     archiveName = tasks.jar.archiveName
     relocate 'de.johni0702.minecraft.gui', 'com.example.examplemod.shadowed.de.johni0702.minecraft.gui'
-    relocate 'assets/jgui', 'assets/examplemod'
 }
 
 reobfJar {
