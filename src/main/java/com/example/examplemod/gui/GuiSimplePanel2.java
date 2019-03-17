@@ -7,7 +7,8 @@ import de.johni0702.minecraft.gui.element.GuiNumberField;
 import de.johni0702.minecraft.gui.element.GuiSlider;
 import de.johni0702.minecraft.gui.layout.GridLayout;
 import de.johni0702.minecraft.gui.layout.VerticalLayout;
-import de.johni0702.minecraft.gui.utils.lwjgl.ReadableColor;
+import org.lwjgl.util.ReadableColor;
+
 
 public class GuiSimplePanel2 extends GuiPanel
 {

@@ -8,8 +8,8 @@ import de.johni0702.minecraft.gui.element.advanced.GuiDropdownMenu;
 import de.johni0702.minecraft.gui.layout.GridLayout;
 import de.johni0702.minecraft.gui.layout.HorizontalLayout;
 import de.johni0702.minecraft.gui.layout.VerticalLayout;
-import de.johni0702.minecraft.gui.utils.lwjgl.Dimension;
 import net.minecraft.client.resources.I18n;
+import org.lwjgl.util.Dimension;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;

@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.Futures;
 import de.johni0702.minecraft.gui.container.GuiPanel;
 import de.johni0702.minecraft.gui.element.GuiButton;
 import de.johni0702.minecraft.gui.element.GuiLabel;
-import de.johni0702.minecraft.gui.layout.HorizontalLayout;
 import de.johni0702.minecraft.gui.layout.VerticalLayout;
 import de.johni0702.minecraft.gui.popup.GuiFileChooserPopup;
 
@@ -25,7 +24,7 @@ public class GuiSimplePanel3 extends GuiPanel
                          public void run()
                          {
                              Futures.addCallback(
-                                     GuiFileChooserPopup.openLoadGui(GuiSimplePanel3.this, "Load", ".txt", ".mml", ".zip", ".ms2mml")
+                                     GuiFileChooserPopup.openLoadGui(GuiSimplePanel3.this, "Load", "txt", "mml", "zip", "ms2mml")
                                              .getFuture(),
                                      new FutureCallback<File>()
                                      {
@@ -43,7 +42,7 @@ public class GuiSimplePanel3 extends GuiPanel
                                          }
                                      });
                          }
-                     }).setSize(75, 20).setI18nLabel("What?");
+            }).setSize(75, 20).setI18nLabel("What?");
 
     GuiSimplePanel3(GuiSimple gui, File file)
     {
@@ -58,6 +57,6 @@ public class GuiSimplePanel3 extends GuiPanel
                 .addElements(null, dialog)
                 .setLayout(new VerticalLayout(VerticalLayout.Alignment.TOP).setSpacing(10));
 
-        addElements(new HorizontalLayout.Data(), leftPanel, rightPanel);
+        addElements(null, leftPanel, rightPanel);
     }
 }
